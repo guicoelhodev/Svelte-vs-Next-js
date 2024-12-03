@@ -4,7 +4,7 @@
 </script>
 
 <li class="flex aspect-video rounded-xl border bg-white shadow-sm">
-  <a href="/" class="grid grid-cols-[0.6fr_1fr] gap-4">
+  <a href="/characters/{character.id}" class="grid grid-cols-[0.6fr_1fr] gap-4">
     <aside class="flex items-stretch rounded-l-xl bg-red-100">
       <img
         class="flex-1 rounded-l-xl bg-red-100 object-cover"
