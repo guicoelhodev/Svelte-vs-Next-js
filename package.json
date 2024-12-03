@@ -1,0 +1,8 @@
+{
+  "name": "svelte-nextjs",
+  "version": "1.0.0",
+  "description": "This project was created to show the same application in two different frameworks and see the differences in numbers.",
+  "keywords": [],
+  "author": "guicoelhodev",
+  "license": "ISC"
+}
