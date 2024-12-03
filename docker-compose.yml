@@ -4,7 +4,7 @@ services:
       context: ./svelte
       dockerfile: Dockerfile.dev
     ports: 
-      - "5173:5173"
+      - "8080:8080"
     volumes:
       - ./svelte:/app
       - /app/node_modules
