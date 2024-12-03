@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Character from './Character.svelte';
+	import PaginationBar from './PaginationBar.svelte';
 
 	let { data } = $props();
+	let currentPage = $state(1);
 
 	let characters = $state(data.results);
 
@@ -16,3 +18,5 @@
 		<Character {...character} />
 	{/each}
 </ul>
+
+<PaginationBar {currentPage} totalPages={data.info.pages} />
