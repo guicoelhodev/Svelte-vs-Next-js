@@ -1,4 +1,18 @@
-  <h1>Welcome to SvelteKit</h1>
-  <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import Character from './Character.svelte';
 
-  <a href='/test' class='bg-blue-400 text-white p-2 rounded-md' >Go to test</a>
+	let { data } = $props();
+
+	let characters = $state(data.results);
+
+	$inspect(data.info);
+</script>
+
+<ul
+	class="grid w-full grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4
+  rounded-md p-4 pb-16 md:grid-cols-2 lg:grid-cols-3"
+>
+	{#each characters as character}
+		<Character {...character} />
+	{/each}
+</ul>
