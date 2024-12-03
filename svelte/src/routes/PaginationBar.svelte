@@ -22,7 +22,7 @@
   }
 </script>
 
-<div class="fixed bottom-4 flex w-full justify-center">
+<div class="fixed bottom-2 flex w-full justify-center">
   <ul
     class="flex items-center gap-2 rounded-lg bg-white p-2 shadow-md shadow-neutral-300"
   >
