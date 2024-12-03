@@ -1,4 +1,15 @@
-	<p>Teste1</p>
-	<p>Teste2</p>
+<script lang="ts">
+	import Character from './Character.svelte';
 
-  <a href='/' class='bg-blue-400 text-white p-2 rounded-md' >Go to home</a>
+	let { data } = $props();
+
+	let characters = $state(data.results);
+</script>
+
+<ul
+	class="grid w-full grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4 rounded-md border p-4 md:grid-cols-2 lg:grid-cols-3"
+>
+	{#each characters as character}
+		<Character {...character} />
+	{/each}
+</ul>
