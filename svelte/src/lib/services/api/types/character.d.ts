@@ -1,5 +1,5 @@
 export interface TCharactereQuery {
-  newUrl: string | null
+  newPageIndex: number
 };
 
 export interface CharactereResponse {
