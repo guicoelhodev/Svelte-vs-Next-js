@@ -4,9 +4,10 @@
     currentPage: number;
     handleCurrentPage: (newPage: number) => void;
   };
-  const visibleButtons = 5;
 
   let { totalPages, currentPage, handleCurrentPage }: TPaginationBar = $props();
+
+  const visibleButtons = 5;
   let range = $derived(getPaginationRange());
 
   function getPaginationRange() {
@@ -41,9 +42,11 @@
     {#each range as page}
       <button
         onclick={() => handleCurrentPage(page)}
-        class="grid aspect-square h-10 place-content-center rounded-full border"
-        >{page}</button
+        class="grid aspect-square h-10 place-content-center rounded-full transition-all border {page ===
+          currentPage && 'bg-green-600 text-white'}"
       >
+        {page}
+      </button>
     {/each}
 
     {#if totalPages - visibleButtons > currentPage}
