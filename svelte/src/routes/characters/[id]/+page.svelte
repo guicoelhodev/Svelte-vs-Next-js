@@ -15,12 +15,13 @@
   }
 </script>
 
-<div class="h-screen grid grid-cols-2 grid-rows-[12rem,1fr] flex-1 gap-4">
+<div class="h-screen grid lg:grid-cols-2 grid-rows-[12rem,1fr] flex-1 gap-4">
   <section class="border p-4 flex bg-white rounded-md">
     {#await characterData}
       <div class="flex flex-1 gap-4">
         <article class="flex self-center">
-          <span class="w-32 h-32 aspect-square bg-neutral-200 rounded-full"
+          <span
+            class="w-20 sm:w-32 h-32 aspect-square bg-neutral-200 rounded-full"
           ></span>
         </article>
 
@@ -40,7 +41,7 @@
           <img
             src={c.image}
             alt={c.image}
-            class="w-32 aspect-square rounded-full"
+            class="w-20 sm:w-32 aspect-square rounded-full"
           />
         </article>
 
@@ -49,7 +50,7 @@
             class="flex-1 grid grid-cols-[repeat(auto-fit,minmax(1fr,10rem))]"
           >
             <div class="flex gap-2 items-center justify-between">
-              <h2 class="text-2xl font-bold">{c.name}</h2>
+              <h2 class="text-lg sm:text-2xl font-bold">{c.name}</h2>
               <a
                 class="border border-green-600 text-green-600 p-2 rounded-full"
                 aria-label="Go back"
