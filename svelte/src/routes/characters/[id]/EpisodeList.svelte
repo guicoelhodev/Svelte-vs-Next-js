@@ -17,12 +17,18 @@
   }
 
   let episodesResponse = $state(getEpisodesResponse());
+
+  const skeletons = Array.from({ length: 20 });
 </script>
 
 <h4 class="mb-2 text-xl font-bold">Episodes</h4>
 
 <ul class="flex flex-col gap-4 overflow-auto">
-  {#await episodesResponse then epList}
+  {#await episodesResponse}
+    {#each skeletons as _}
+      <span class="h-16 rounded-md bg-neutral-200"></span>
+    {/each}
+  {:then epList}
     {#each epList as ep}
       <li class="border p-2 rounded-md text-sm">
         <article class="flex gap-2 justify-between items-start">

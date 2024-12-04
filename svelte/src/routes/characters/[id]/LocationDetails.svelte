@@ -7,7 +7,7 @@
     handleCharacterId: (id: string) => void;
   };
 
-  let { name, url, handleCharacterId }: Props = $props();
+  const { name, url, handleCharacterId }: Props = $props();
   let locationData = $state(getResidentsData());
 
   async function getResidentsData() {
@@ -35,14 +35,15 @@
   <ul class="grid grid-cols-5 gap-4">
     {#await locationData}
       {#each skeletonList as _}
-        <span class="aspect-square size-full rounded-full bg-gray-200"></span>
+        <span class="aspect-square size-full rounded-full bg-neutral-200"
+        ></span>
       {/each}
     {:then locationData}
       {#each locationData.residents as r}
         <li>
           <button onclick={() => handleCharacterId(String(r.id))}>
             <img
-              class="aspect-square size-full rounded-full bg-gray-200"
+              class="aspect-square size-full rounded-full bg-neutral-200"
               src={r.image}
               alt={r.name}
             />
