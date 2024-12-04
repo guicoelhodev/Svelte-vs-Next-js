@@ -1,6 +1,7 @@
 <script lang="ts">
   import { api } from "$lib/services/api/index.js";
   import EpisodeList from "./EpisodeList.svelte";
+  import LocationDetails from "./LocationDetails.svelte";
 
   let { data } = $props();
 
@@ -51,7 +52,8 @@
     {/await}
   </section>
   <section class="bg-white p-4 rounded-md border">
-    <article>1.2</article>
-    <article>1.3</article>
+    {#await characterData then c}
+      <LocationDetails {...c.location} />
+    {/await}
   </section>
 </div>

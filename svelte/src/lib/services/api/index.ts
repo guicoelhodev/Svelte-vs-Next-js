@@ -1,6 +1,7 @@
 import type { APIContract } from "./types/apiContract";
 import type { TCharactereQuery, CharactereResponse } from "./types/character";
 import type { EpisodeResponse } from "./types/episode";
+import type { LocationResponse } from "./types/location";
 import type { TSingleCharactere } from "./types/singleCharacter";
 
 export class API implements APIContract {
@@ -32,6 +33,12 @@ export class API implements APIContract {
   async getEpisode(newUrlEpisode: string) {
     const responseFetch = await fetch(newUrlEpisode);
     const response = (await responseFetch.json()) as EpisodeResponse;
+    return response;
+  }
+
+  async getLocation(urlLocation: string) {
+    const responseFetch = await fetch(urlLocation);
+    const response = (await responseFetch.json()) as LocationResponse;
     return response;
   }
 }
