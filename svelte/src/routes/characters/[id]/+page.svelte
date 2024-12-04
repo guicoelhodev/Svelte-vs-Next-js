@@ -1,13 +1,20 @@
 <script lang="ts">
+  import { page } from "$app/stores";
   import { api } from "$lib/services/api/index.js";
   import EpisodeList from "./EpisodeList.svelte";
   import LocationDetails from "./LocationDetails.svelte";
 
-  let { data } = $props();
+  let id = $state($page.params.id);
 
-  let characterData = $state(
-    api.getSingleCharacter(`${api.endpoint}/character/${data.id}`),
+  let characterData = $derived(
+    api.getSingleCharacter(`${api.endpoint}/character/${id}`),
   );
+
+  function handleIdCharacter(newId: string) {
+    id = newId;
+  }
+
+  $inspect(id);
 </script>
 
 <div class="h-screen grid grid-cols-2 grid-rows-[12rem,1fr] flex-1 gap-4">
@@ -53,7 +60,7 @@
   </section>
   <section class="bg-white p-4 rounded-md border">
     {#await characterData then c}
-      <LocationDetails {...c.location} />
+      <LocationDetails {...c.location} handleCharacterId={handleIdCharacter} />
     {/await}
   </section>
 </div>
