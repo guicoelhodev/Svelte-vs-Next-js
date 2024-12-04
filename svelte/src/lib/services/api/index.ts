@@ -1,9 +1,10 @@
 import type { APIContract } from "./types/apiContract";
 import type { TCharactereQuery, CharactereResponse } from "./types/character";
+import type { EpisodeResponse } from "./types/episode";
 import type { TSingleCharactere } from "./types/singleCharacter";
 
 export class API implements APIContract {
-  private endpoint = "https://rickandmortyapi.com/api";
+  endpoint = "https://rickandmortyapi.com/api";
   private static instance: API | null = null;
 
   static getInstance() {
@@ -22,11 +23,15 @@ export class API implements APIContract {
     return response;
   }
 
-  async getSingleCharacter(characterId: string) {
-    const url = `${this.endpoint}/character/${characterId}`;
-
-    const responseFetch = await fetch(url);
+  async getSingleCharacter(newUrlCharactere: string) {
+    const responseFetch = await fetch(newUrlCharactere);
     const response = (await responseFetch.json()) as TSingleCharactere;
+    return response;
+  }
+
+  async getEpisode(newUrlEpisode: string) {
+    const responseFetch = await fetch(newUrlEpisode);
+    const response = (await responseFetch.json()) as EpisodeResponse;
     return response;
   }
 }
