@@ -1,7 +1,3 @@
-export interface TCharactereQuery {
-  newPageIndex: number;
-}
-
 export interface CharactereResponse {
   info: Info;
   results: Result[];

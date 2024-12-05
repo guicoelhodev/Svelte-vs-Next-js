@@ -6,29 +6,36 @@
   let { data } = $props();
   let currentPage = $state(1);
 
-  let characters = $state(data.results);
+  let charactersResponse = $derived(
+    currentPage === 1 ? data.response : api.getCharacters(currentPage),
+  );
 
   function handleCurrentPage(newPage: number) {
     currentPage = newPage;
   }
 
-  async function updateList(pageIndex: number) {
-    const newList = await api.getCharacters({ newPageIndex: pageIndex });
-    characters = newList.results;
-  }
-
-  $effect(() => {
-    updateList(currentPage);
-  });
+  const skeletonsCards = Array.from({ length: 30 });
 </script>
 
 <ul
   class="grid w-full grid-cols-[repeat(auto-fit,minmax(16rem,1fr))] gap-4
   rounded-md p-4 pb-16 md:grid-cols-2 lg:grid-cols-3"
 >
-  {#each characters as character}
-    <Character {...character} />
-  {/each}
+  {#await charactersResponse}
+    {#each skeletonsCards as _}
+      <div class="bg-neutral-200 w-full h-52 rounded-md"></div>
+    {/each}
+  {:then response}
+    {#each response.results as character}
+      <Character {...character} />
+    {/each}
+  {/await}
 </ul>
 
-<PaginationBar {handleCurrentPage} {currentPage} totalPages={data.info.pages} />
+{#await charactersResponse then data}
+  <PaginationBar
+    {handleCurrentPage}
+    {currentPage}
+    totalPages={data.info.pages}
+  />
+{/await}

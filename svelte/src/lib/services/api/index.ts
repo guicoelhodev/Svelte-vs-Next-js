@@ -1,5 +1,5 @@
 import type { APIContract } from "./types/apiContract";
-import type { TCharactereQuery, CharactereResponse } from "./types/character";
+import type { CharactereResponse } from "./types/character";
 import type { EpisodeResponse } from "./types/episode";
 import type { LocationResponse } from "./types/location";
 import type { TSingleCharactere } from "./types/singleCharacter";
@@ -15,8 +15,8 @@ export class API implements APIContract {
     return this.instance;
   }
 
-  async getCharacters(args: TCharactereQuery) {
-    const url = `${this.endpoint}/character/?page=${args.newPageIndex}`;
+  async getCharacters(newPageIndex: number) {
+    const url = `${this.endpoint}/character/?page=${newPageIndex}`;
 
     const responseFetch = await fetch(url);
     const response = (await responseFetch.json()) as CharactereResponse;
