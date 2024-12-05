@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
+		"dev:docker": "vite dev --port 8080 --host",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
